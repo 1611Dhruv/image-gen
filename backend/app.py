@@ -30,7 +30,7 @@ def generate_images_api():
     json_data = request.get_json(force=True)
     text_prompt = json_data["text"]
     num_images = json_data["num_images"]
-    steps = "steps" in json_data.keys()? json_data["steps"] : 100
+    steps = json_data["steps"] if("steps" in json_data.keys()) else 100
     generated_imgs = stable_diff_model.generate_images(text_prompt, num_images, steps)
 
     returned_generated_images = []
