@@ -4,7 +4,7 @@ import torch
 class StableDiffusionWrapper:
     def __init__(self) -> None:
         model_id = "prompthero/openjourney"
-        pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
+        pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16,safety_checker = None, requires_safety_checker = False)
         self.pipe = pipe.to("cuda")
 
             
